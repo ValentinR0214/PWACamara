@@ -70,8 +70,14 @@ function takePhoto() {
         return;
     }
 
+    const videoWidth = video.videoWidth;
+    const videoHeight = video.videoHeight;
+
+    canvas.width = videoWidth;
+    canvas.height = videoHeight;
+
     // 1. Dibujar el Frame de Video en el Canvas
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
 
     // 2. Conversión a Data URL (Base64)
     const imageDataURL = canvas.toDataURL('image/png');
