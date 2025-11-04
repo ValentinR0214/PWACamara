@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+       
     <meta charset="UTF-8">
+       
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PWA Cámara</title>
-    <meta name="theme-color" content="#2196F3"/>
+        <title>PWA Cámara</title>
+       
+    <meta name="theme-color" content="#2196F3" />
+       
     <link rel="manifest" href="manifest.json">
-    
-    <style>
-        /* Estilos CSS (Puedes mover esto a un archivo style.css si lo prefieres) */
+       
+        <style>
         body {
             font-family: sans-serif;
             text-align: center;
@@ -22,15 +26,15 @@
             padding: 10px;
             background-color: #fff;
             border-radius: 8px;
-            /* **Inicialmente oculto (como lo requiere tu lógica JS)** */
-            display: none; 
+            display: none;
             max-width: fit-content;
             margin-left: auto;
             margin-right: auto;
         }
 
-        video, canvas {
-            width: 320px; /* Tamaño del video/canvas según tus constraints */
+        video,
+        canvas {
+            width: 320px;
             height: 240px;
             display: block;
             margin-bottom: 10px;
@@ -38,8 +42,18 @@
             background-color: #000;
         }
 
+        /* Ocultar el canvas y el boton "frontal" que fue reemplazado */
+        #canvas {
+            display: none;
+        }
+
+        #frontal {
+            /* Si existe, también ocúltalo */
+            display: none;
+        }
+
         button {
-            padding: 10px 20px;
+            padding: 10px 15px;
             margin: 5px;
             border: none;
             border-radius: 5px;
@@ -48,7 +62,8 @@
             transition: background-color 0.3s;
         }
 
-        #openCamera {
+        #openCamera,
+        #clearGalleryBtn {
             background-color: #4CAF50;
             color: white;
         }
@@ -57,30 +72,80 @@
             background-color: #a5d6a7;
         }
 
+        /* Estilo para el nuevo botón de cambio de cámara */
+        #switchCameraBtn {
+            background-color: #ff9800;
+            color: white;
+        }
+
         #takePhoto {
             background-color: #2196F3;
             color: white;
         }
+
+        /* Estilos para la Galería Temporal */
+        #galleryContainer {
+            margin-top: 30px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #thumbnailGallery {
+            display: flex;
+            overflow-x: auto;
+            /* Permite el scroll horizontal */
+            gap: 10px;
+            padding-bottom: 10px;
+            white-space: nowrap;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            border: 2px solid #333;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
     </style>
 </head>
+
 <body>
 
-    <h1>PWA de camara</h1>
-    
-    <button id="openCamera">Abrir Cámara</button>
+        <h1>Galería </h1>
+       
+        <button id="openCamera">Abrir Cámara</button>
 
+       
     <hr>
 
-    <div id="cameraContainer">
-        
-        <video id="video" width="320" height="240" autoplay playsinline></video>
-        
-        <button id="takePhoto">Tomar Foto</button>
-        <button id="frontal"> Frontal </button>
+        <div id="cameraContainer">
+               
+                <video id="video" autoplay playsinline></video>
+               
+        <div>
+            <button id="takePhoto">Tomar Foto</button>
+            <button id="switchCameraBtn">Cambiar Cámara</button>
+        </div>
 
-        <canvas id="canvas" width="320" height="240"></canvas>
+                <canvas id="canvas" width="320" height="240"></canvas>
+           
     </div>
 
+    <div id="galleryContainer">
+        <h2>Galería Temporal de Fotos</h2>
+        <div id="thumbnailGallery">
+            <p id="noPhotosMessage">Aún no hay fotos capturadas.</p>
+        </div>
+        <button id="clearGalleryBtn">Limpiar Galería</button>
+    </div>
+
+       
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -94,8 +159,10 @@
             });
         }
     </script>
-    
+       
+       
     <script src="main.js"></script>
 
 </body>
+
 </html>
