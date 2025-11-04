@@ -30,7 +30,7 @@
         }
 
         video, canvas {
-            width: 320px; /* Tamaño del video/canvas según tus constraints */
+            width: 240px; /* Tamaño del video/canvas según tus constraints */
             height: 240px;
             display: block;
             margin-bottom: 10px;
@@ -76,18 +76,15 @@
         <video id="video" autoplay playsinline></video>
         
         <button id="takePhoto">Tomar Foto</button>
+        <button id="frontal"> Frontal </button>
 
         <canvas id="canvas" width="320" height="240"></canvas>
-
-        <h2>Foto Capturada (Canvas)</h2>
-        <p>El Canvas muestra la última imagen capturada. El JS transforma el video a imagen aquí.</p>
-
     </div>
 
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('sw.js')
                     .then(registration => {
                         console.log('SW registrado: ', registration);
                     })
