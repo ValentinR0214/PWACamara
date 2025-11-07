@@ -369,6 +369,7 @@ hr {
     button {
         padding: 14px 28px;
         font-size: 14px;
+        margin: 6px;
     }
 
     #openCamera {
@@ -398,6 +399,7 @@ hr {
         display: block;
         width: 100%;
         max-width: 300px;
+        margin: 8px auto;
     }
 
     .thumbnail {
