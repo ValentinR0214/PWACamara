@@ -2,17 +2,16 @@
 <html lang="es">
 
 <head>
-       
     <meta charset="UTF-8">
-       
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PWA Cámara</title>
-       
+    <title>PWA Cámara</title>
+    
     <meta name="theme-color" content="#2196F3" />
-       
+    
+    <!-- Esta es la etiqueta correcta para el manifest -->
     <link rel="manifest" href="manifest.json">
-       
-        <style>
+
+    <style>
         body {
             font-family: sans-serif;
             text-align: center;
@@ -122,24 +121,19 @@
 
 <body>
 
-        <h1>Galería </h1>
-       
-        <button id="openCamera">Abrir Cámara</button>
+    <h1>Galería</h1>
 
-       
+    <button id="openCamera">Abrir Cámara</button>
+
     <hr>
 
-        <div id="cameraContainer">
-               
-                <video id="video" autoplay playsinline></video>
-               
+    <div id="cameraContainer">
+        <video id="video" autoplay playsinline></video>
         <div>
             <button id="takePhoto">Tomar Foto</button>
             <button id="switchCameraBtn">Cambiar Cámara</button>
         </div>
-
-                <canvas id="canvas"></canvas>
-           
+        <canvas id="canvas"></canvas>
     </div>
 
     <div id="galleryContainer">
@@ -148,8 +142,8 @@
             <p id="noPhotosMessage">Aún no hay fotos capturadas.</p>
         </div>
         <button id="clearGalleryBtn">Limpiar Galería</button>
-    </div>     
-       
+    </div>
+
     <script src="main.js"></script>
 
 </body>
