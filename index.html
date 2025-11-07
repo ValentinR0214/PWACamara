@@ -33,19 +33,19 @@
         }
 
         video {
-    width: 320px;
-    height: auto;
-    display: block;
-    margin-bottom: 10px;
-    border: 1px solid #333;
-    background-color: #000;
-}
+            width: 320px;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            background-color: #000;
+        }
 
-canvas {
-    width: 320px; 
-    height: 240px; 
-    display: none; 
-}
+        canvas {
+            width: 320px;
+            height: 240px;
+            display: none;
+        }
 
         /* Ocultar el canvas y el boton "frontal" que fue reemplazado */
         #canvas {
@@ -110,13 +110,13 @@ canvas {
         }
 
         .thumbnail {
-    width: 100px;
-    height: auto;
-    object-fit: cover;
-    border: 2px solid #333;
-    border-radius: 4px;
-    flex-shrink: 0;
-}
+            width: 100px;
+            height: auto;
+            object-fit: cover;
+            border: 2px solid #333;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 
@@ -148,23 +148,7 @@ canvas {
             <p id="noPhotosMessage">Aún no hay fotos capturadas.</p>
         </div>
         <button id="clearGalleryBtn">Limpiar Galería</button>
-    </div>
-
-       
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('SW registrado: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('Fallo el registro SW: ', registrationError);
-                    });
-            });
-        }
-    </script>
-       
+    </div>     
        
     <script src="main.js"></script>
 

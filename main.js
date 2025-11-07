@@ -1,3 +1,16 @@
+if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('SW registrado: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('Fallo el registro SW: ', registrationError);
+                    });
+            });
+        }
+
+
 // Referencias a elementos del DOM
 const openCameraBtn = document.getElementById('openCamera');
 const cameraContainer = document.getElementById('cameraContainer');
