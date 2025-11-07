@@ -5,6 +5,7 @@ const urlsToCache = [ // Lista de archivos a guardar en caché
     'index.html',
     'main.js',
     'manifest.json',
+    'styles/estilo.css',
     'images/icons/192.png', 
     'images/icons/512.png'
 ];
