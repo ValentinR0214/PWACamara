@@ -278,7 +278,7 @@ hr {
     overflow-y: hidden;
     gap: 20px;
     padding: 20px 0;
-    min-height: 200px;
+    min-height: auto;
     position: relative;
     scroll-behavior: smooth;
 }
@@ -319,7 +319,7 @@ hr {
 /* Miniaturas de fotos - TAMAÑO FIJO PARA SCROLL HORIZONTAL */
 .thumbnail {
     width: 200px;
-    height: 200px;
+    height: auto;
     min-width: 200px;
     object-fit: cover;
     border-radius: 12px;
@@ -380,7 +380,7 @@ hr {
 
     .thumbnail {
         width: 150px;
-        height: 150px;
+        height: auto;
         min-width: 150px;
     }
 }
@@ -401,7 +401,7 @@ hr {
 
     .thumbnail {
         width: 120px;
-        height: 120px;
+        height: auto;
         min-width: 120px;
     }
 }
