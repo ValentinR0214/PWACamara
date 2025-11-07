@@ -1,3 +1,8 @@
+/* ========================================
+   ESTILOS PROFESIONALES - PWA CÁMARA
+   ======================================== */
+
+/* Variables CSS para fácil personalización */
 :root {
     --primary-color: #667eea;
     --secondary-color: #764ba2;
@@ -6,7 +11,7 @@
     --warning-color: #fbbf24;
     --danger-color: #f87171;
     --dark-bg: #1e1b4b;
-    --light-bg: #f8fafc;
+    --light-bg: #f0f4f8;
     --card-bg: rgba(255, 255, 255, 0.95);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 25px 80px rgba(0, 0, 0, 0.25);
@@ -14,6 +19,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Reset y estilos base */
 * {
     margin: 0;
     padding: 0;
@@ -22,32 +28,14 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: var(--light-bg);
     min-height: 100vh;
     padding: 20px;
     position: relative;
     overflow-x: hidden;
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: backgroundMove 20s linear infinite;
-    z-index: 0;
-    pointer-events: none;
-}
-
-@keyframes backgroundMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-}
-
+/* Contenedor principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -55,13 +43,14 @@ body::before {
     z-index: 1;
 }
 
+/* Título principal */
 h1 {
-    color: white;
+    color: var(--dark-bg);
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 40px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     animation: fadeInDown 0.6s ease;
     letter-spacing: -1px;
 }
@@ -77,6 +66,7 @@ h1 {
     }
 }
 
+/* Sección de control principal */
 .control-section {
     text-align: center;
     margin-bottom: 40px;
@@ -88,6 +78,7 @@ h1 {
     to { opacity: 1; }
 }
 
+/* Estilos de botones mejorados */
 button {
     padding: 16px 32px;
     margin: 8px;
@@ -186,10 +177,11 @@ button:active {
     box-shadow: none;
 }
 
+/* Contenedor de la cámara */
 #cameraContainer {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.3);
     border-radius: var(--border-radius);
     padding: 30px;
     box-shadow: var(--shadow-xl);
@@ -210,9 +202,9 @@ button:active {
     }
 }
 
+/* Video de la cámara */
 video {
-    width: 100%;
-    max-width: 400px;
+    width: 320px;
     height: auto;
     display: block;
     margin: 0 auto 20px;
@@ -228,7 +220,10 @@ video:hover {
     box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
 }
 
+/* Canvas oculto */
 canvas {
+    width: 320px;
+    height: auto;
     display: none !important;
 }
 
@@ -236,18 +231,20 @@ canvas {
     display: none !important;
 }
 
+/* Divisor decorativo */
 hr {
     border: none;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.4), transparent);
     margin: 30px 0;
     display: none;
 }
 
+/* Contenedor de galería */
 #galleryContainer {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.3);
     border-radius: var(--border-radius);
     padding: 30px;
     box-shadow: var(--shadow-lg);
@@ -273,27 +270,57 @@ hr {
     font-weight: 700;
 }
 
+/* Galería de miniaturas - HORIZONTAL CON SCROLL */
 #thumbnailGallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
     gap: 20px;
     padding: 20px 0;
     min-height: 200px;
     position: relative;
+    scroll-behavior: smooth;
 }
 
+/* Scrollbar personalizado para la galería */
+#thumbnailGallery::-webkit-scrollbar {
+    height: 10px;
+}
+
+#thumbnailGallery::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+#thumbnailGallery::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+}
+
+#thumbnailGallery::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Mensaje cuando no hay fotos */
 #noPhotosMessage {
-    grid-column: 1 / -1;
+    width: 100%;
     text-align: center;
     color: #64748b;
     font-size: 1.1rem;
     padding: 60px 20px;
     font-style: italic;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
+/* Miniaturas de fotos - TAMAÑO FIJO PARA SCROLL HORIZONTAL */
 .thumbnail {
-    width: 100%;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    min-width: 200px;
     object-fit: cover;
     border-radius: 12px;
     border: 3px solid rgba(102, 126, 234, 0.2);
@@ -301,6 +328,7 @@ hr {
     transition: var(--transition);
     cursor: pointer;
     animation: photoAppear 0.4s ease;
+    flex-shrink: 0;
 }
 
 @keyframes photoAppear {
@@ -320,6 +348,7 @@ hr {
     border-color: var(--primary-color);
 }
 
+/* Estilos responsivos */
 @media (max-width: 768px) {
     body {
         padding: 15px;
@@ -349,13 +378,10 @@ hr {
         padding: 20px;
     }
 
-    #thumbnailGallery {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 15px;
-    }
-
     .thumbnail {
-        height: 120px;
+        width: 150px;
+        height: 150px;
+        min-width: 150px;
     }
 }
 
@@ -373,16 +399,14 @@ hr {
         margin: 8px auto;
     }
 
-    #thumbnailGallery {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 10px;
-    }
-
     .thumbnail {
-        height: 100px;
+        width: 120px;
+        height: 120px;
+        min-width: 120px;
     }
 }
 
+/* Animación de carga */
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
@@ -392,26 +416,9 @@ hr {
     }
 }
 
+/* Efecto de brillo en hover para cards */
 #cameraContainer:hover,
 #galleryContainer:hover {
     box-shadow: 0 30px 90px rgba(102, 126, 234, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-#thumbnailGallery::-webkit-scrollbar {
-    height: 8px;
-}
-
-#thumbnailGallery::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-}
-
-#thumbnailGallery::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 10px;
-}
-
-#thumbnailGallery::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    border-color: rgba(102, 126, 234, 0.5);
 }
