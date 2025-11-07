@@ -141,6 +141,8 @@ button:active {
     background: linear-gradient(135deg, var(--warning-color), #f59e0b);
     color: white;
     box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+    display: block;
+    width: 100%;
 }
 
 #switchCameraBtn:hover {
@@ -152,6 +154,8 @@ button:active {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    display: block;
+    width: 100%;
 }
 
 #takePhoto:hover {
